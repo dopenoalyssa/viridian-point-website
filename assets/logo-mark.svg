@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 256" role="img" aria-label="Viridian Point rising V mark"><defs>
+<linearGradient id="arrow" x1="110" y1="214" x2="220" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4ba334"/><stop offset=".54" stop-color="#91d63b"/><stop offset="1" stop-color="#d6f644"/></linearGradient>
+<linearGradient id="ribbon" x1="32" y1="83" x2="162" y2="224" gradientUnits="userSpaceOnUse"><stop stop-color="#21d779"/><stop offset=".47" stop-color="#00985d"/><stop offset=".82" stop-color="#005737"/><stop offset="1" stop-color="#087543"/></linearGradient>
+</defs><path d="M111 166L164 84H142L218 39Q223 36 221 42L167 203Q161 220 149 215Z" fill="url(#arrow)"/>
+<path d="M20 94H68Q79 94 85 105L140 201Q151 224 167 215Q151 240 130 237Q111 236 100 215Z" fill="url(#ribbon)"/>
+<path d="M111 166L140 201Q151 224 167 215L163 221Q149 229 138 212Z" fill="#0b3434" opacity=".76"/>
+<circle cx="231" cy="77" r="22" fill="#d6f644"/></svg>
