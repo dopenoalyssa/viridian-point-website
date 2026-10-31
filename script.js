@@ -36,6 +36,12 @@ function createEmailCard(email) {
   item.append(button);
   return item;
 }
+function cloneEmailGroup(group) {
+  const duplicate = group.cloneNode(true);
+  duplicate.setAttribute('aria-hidden', 'true');
+  for (const button of duplicate.querySelectorAll('[data-email]')) button.tabIndex = -1;
+  return duplicate;
+}
 const emailMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const emailShowcases = [];
 for (const section of document.querySelectorAll('[data-email-showcase]')) {
@@ -50,15 +56,13 @@ for (const section of document.querySelectorAll('[data-email-showcase]')) {
     group.setAttribute('aria-label', `Email designs, row ${rowIndex + 1}`);
     for (const email of designs) group.append(createEmailCard(email));
     // An identical continuation produces the same frame at both loop endpoints.
-    const duplicate = group.cloneNode(true);
-    duplicate.setAttribute('aria-hidden', 'true');
-    for (const button of duplicate.querySelectorAll('[data-email]')) button.tabIndex = -1;
+    const duplicate = cloneEmailGroup(group);
     moving.append(group, duplicate);
     row.append(moving);
     stage.append(row);
-    tracks.push({ moving, group });
+    tracks.push({ moving, group, row });
   }
-  const cards = Array.from(stage.querySelectorAll('[data-email]'));
+  let cards = Array.from(stage.querySelectorAll('[data-email]'));
   function measureEmailCard(card) {
     const viewport = card.querySelector('.email-preview-viewport');
     const image = card.querySelector('img');
@@ -71,16 +75,28 @@ for (const section of document.querySelectorAll('[data-email-showcase]')) {
     card.style.setProperty('--email-scroll-duration', `${Math.max(4, travel / 90)}s`);
   }
   function sizeEmailShowcase() {
-    for (const { moving, group } of tracks) {
-      moving.style.setProperty('--email-row-duration', `${Math.max(25, group.getBoundingClientRect().width / 30)}s`);
+    for (const { moving, group, row } of tracks) {
+      const cycleWidth = group.getBoundingClientRect().width;
+      if (!cycleWidth) continue;
+      const copies = Math.max(2, Math.ceil(row.getBoundingClientRect().width / cycleWidth) + 1);
+      while (moving.children.length < copies) moving.append(cloneEmailGroup(group));
+      while (moving.children.length > copies) moving.lastElementChild.remove();
+      moving.style.setProperty('--email-cycle-width', `${cycleWidth}px`);
+      moving.style.setProperty('--email-row-duration', `${Math.max(25, cycleWidth / 30)}s`);
     }
+    cards = Array.from(stage.querySelectorAll('[data-email]'));
     for (const card of cards) measureEmailCard(card);
   }
-  for (const card of cards) {
-    card.addEventListener('pointerenter', () => measureEmailCard(card));
-    card.addEventListener('focus', () => measureEmailCard(card));
-    card.querySelector('img').addEventListener('load', () => measureEmailCard(card));
-  }
+  // Delegation also covers continuation cards added after a screen resize.
+  stage.addEventListener('pointerover', event => {
+    const card = event.target.closest('[data-email]');
+    if (card) measureEmailCard(card);
+  });
+  stage.addEventListener('load', event => {
+    if (event.target.tagName !== 'IMG') return;
+    const card = event.target.closest('[data-email]');
+    if (card) measureEmailCard(card);
+  }, true);
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(sizeEmailShowcase);
     observer.observe(stage);
@@ -95,16 +111,20 @@ for (const section of document.querySelectorAll('[data-email-showcase]')) {
   // Keyboard browsing uses a stationary, scrollable row with one copy per email.
   stage.addEventListener('focusin', event => {
     const card = event.target.closest('[data-email]');
+    if (card) measureEmailCard(card);
     if (card && card.matches(':focus-visible')) {
-      section.classList.add('emails-keyboard-browse');
+      if (!emailMotionPreference.matches) section.classList.add('emails-keyboard-browse');
       card.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
     }
   });
   stage.addEventListener('focusout', event => {
-    if (!stage.contains(event.relatedTarget)) section.classList.remove('emails-keyboard-browse');
+    if (!stage.contains(event.relatedTarget)) {
+      section.classList.remove('emails-keyboard-browse');
+      for (const row of stage.querySelectorAll('.email-marquee-row')) row.scrollLeft = 0;
+    }
   });
   updateEmailMotion();
-  emailShowcases.push({ section, tracks, cards, size: sizeEmailShowcase });
+  emailShowcases.push({ section, tracks, get cards() { return cards; }, size: sizeEmailShowcase });
 }
 // End shared email showcases.
 
@@ -122,7 +142,7 @@ document.addEventListener('keydown', event => {
     menuToggle.focus();
   }
 });
-const desktopQuery = window.matchMedia('(min-width: 851px)');
+const desktopQuery = window.matchMedia('(min-width: 1101px)');
 desktopQuery.addEventListener('change', event => { if (event.matches) setMenu(false); });
 
 const dialog = document.querySelector('#preview-dialog');
@@ -150,13 +170,15 @@ document.querySelectorAll('[data-info]').forEach(button => button.addEventListen
   paragraph.textContent = text;
   openDialog(title, paragraph);
 }));
-document.querySelectorAll('[data-email]').forEach(button => button.addEventListener('click', () => {
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-email]');
+  if (!button) return;
   const image = document.createElement('img');
   image.src = button.dataset.email;
   image.alt = button.dataset.title + ': full email design';
   image.style.height = 'auto';
   openDialog(button.dataset.title, image);
-}));
+});
 document.querySelector('#close-dialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
 dialog.addEventListener('click', event => {
@@ -183,6 +205,9 @@ function createClientLogo(logo) {
   const item = document.createElement('li');
   const sizes = ['standard', 'wide', 'compact'];
   item.className = 'client-logo-slot client-logo-' + (sizes.includes(logo.size) ? logo.size : 'standard');
+  item.classList.add(logo.originalBackground === 'dark' ? 'logo-original-dark' : 'logo-original-light');
+  item.tabIndex = 0;
+  item.title = `${logo.name} · Original colors on hover or focus`;
   const mark = document.createElementNS(svgNamespace, 'svg');
   mark.classList.add('client-logo-art');
   mark.setAttribute('role', 'img');
@@ -249,6 +274,40 @@ function updateLogoMotion() {
 }
 logoMotionPreference.addEventListener('change', updateLogoMotion);
 updateLogoMotion();
+
+// Keyboard browsing keeps one stationary logo set without changing row heights.
+logoStage.addEventListener('focusin', event => {
+  const item = event.target.closest('.client-logo-slot');
+  if (item && item.matches(':focus-visible')) {
+    if (!logoMotionPreference.matches) logoSection.classList.add('logos-keyboard-browse');
+    item.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+  }
+});
+logoStage.addEventListener('focusout', event => {
+  if (!logoStage.contains(event.relatedTarget)) {
+    logoSection.classList.remove('logos-keyboard-browse');
+    for (const row of logoStage.querySelectorAll('.logo-marquee-row')) row.scrollLeft = 0;
+  }
+});
+
+// Keep anchor offsets aligned with the actual header, including font loading.
+const siteHeader = document.querySelector('.site-header');
+function updateHeaderOffset() {
+  document.documentElement.style.setProperty('--header-height', `${Math.ceil(siteHeader.getBoundingClientRect().height)}px`);
+}
+if ('ResizeObserver' in window) {
+  const headerObserver = new ResizeObserver(updateHeaderOffset);
+  headerObserver.observe(siteHeader);
+} else window.addEventListener('resize', updateHeaderOffset);
+updateHeaderOffset();
+
+// Pause offscreen marquees at their current position to reduce scroll work.
+if ('IntersectionObserver' in window) {
+  const motionObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) entry.target.classList.toggle('motion-offscreen', !entry.isIntersecting);
+  }, { rootMargin: '160px 0px' });
+  for (const section of document.querySelectorAll('#partners, [data-email-showcase]')) motionObserver.observe(section);
+}
 
 // The footer icons become outbound links once real agency URLs are supplied.
 for (const button of document.querySelectorAll('[data-social]')) {

@@ -1,0 +1,293 @@
+/* Readable typography and stable layouts from narrow phones to wide screens. */
+:root {
+  --page-gutter: clamp(20px, 3.5vw, 72px);
+  --body-size: clamp(16px, 15px + .25vw, 18px);
+  --copy-size: clamp(17px, 15.5px + .25vw, 19px);
+  --small-size: 14px;
+  --header-height: 92px;
+}
+html {
+  scroll-behavior:auto;
+  scroll-padding-top:var(--header-height);
+  scrollbar-gutter:stable;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body {font-size:var(--body-size);line-height:1.8}
+em,.serif {letter-spacing:-.04em;font-kerning:normal}
+.review blockquote {letter-spacing:-.025em;font-kerning:normal}
+.container {width:min(1440px,calc(100% - var(--page-gutter) * 2));margin-inline:auto}
+.container>*,.section-heading>*,.split>*,.booking-layout>*,.faq-layout>*,.stats-layout>* {min-width:0}
+.section-pad {padding-block:clamp(64px,7vw,112px)}
+.section-text,.section-heading .section-text,.split .section-text {font-size:var(--copy-size);line-height:1.85;max-width:510px}
+.section-heading {align-items:center;gap:clamp(28px,5vw,80px)}
+.section-heading .section-text {max-width:430px}
+.eyebrow,.partners .eyebrow,.email-showcase-heading .eyebrow {font-size:12px;font-weight:500;line-height:1.8;letter-spacing:.1em}
+.tag {font-size:11px;line-height:1.6}
+.placeholder-note,.proof-note {font-size:13px;line-height:1.8}
+.draft-banner {font-size:11px;line-height:1.7;padding-block:8px}
+.site-header {isolation:isolate;z-index:30}
+.nav-wrap {min-height:92px;gap:28px}
+.brand {font-size:16px}
+#navigation {gap:clamp(20px,2vw,32px)}
+#navigation>a:not(.button) {font-size:15px;line-height:1.7}
+.button,.button-small,.booking-card .button {font-size:15px;min-height:54px;padding:15px 24px}
+.hero-centered .hero-copy {max-width:1180px;padding-block:clamp(64px,6vw,96px)}
+.hero-centered h1 {max-width:1180px;font-size:clamp(44px,5vw,76px);line-height:1.28}
+.hero-centered .hero-sub {font-size:clamp(18px,1.25vw,20px);max-width:850px;line-height:1.85}
+.hero-centered .eyebrow {font-size:12px}
+.hero-proof p {font-size:13px;line-height:1.75}
+.hero-proof small {font-size:12px;line-height:1.7}
+.hero-centered .text-link {font-size:15px}
+.hero-centered:before {animation:none}
+.story-copy .eyebrow {font-size:12px}
+.story-copy .section-text {font-size:var(--copy-size);max-width:760px;line-height:1.85}
+.story-cta>p {font-size:14px}
+.video-bottom,.story-centered .video-bottom {font-size:12px;line-height:1.7}
+.video-bottom small,.story-centered .video-bottom small {font-size:13px}
+.stats p {font-size:15px;line-height:1.75}
+.stats small {font-size:12px;line-height:1.75}
+.stats {gap:28px}
+.services-grid {grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(24px,3vw,48px)}
+.service h3 {font-size:22px;line-height:1.45}
+.service p {font-size:var(--body-size);line-height:1.85;max-width:none}
+.service-number {font-size:13px}
+.section-end>span {font-size:12px;line-height:1.8}
+.why-heading .section-text {font-size:var(--copy-size);max-width:720px}
+.switch-table {font-size:16px}
+.switch-table th {font-size:17px}
+.comparison-context {font-size:13px;line-height:1.85}
+.case-study {grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.case-story p,.case-story .case-result-line {font-size:17px;line-height:1.85}
+.case-story small {font-size:13px;line-height:1.8}
+.case-metrics {gap:24px;flex-wrap:wrap}
+.case-metrics span {font-size:13px;line-height:1.7}
+.dashboard-area {grid-template-columns:repeat(2,minmax(0,1fr));min-width:0}
+.dashboard-card {min-width:0}
+.dashboard-top,.dashboard-card p {font-size:11px;line-height:1.7}
+.dashboard-card>strong {font-size:clamp(21px,2vw,28px);overflow-wrap:anywhere}
+.dashboard-area .placeholder-note {font-size:12px}
+.review-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.review {min-width:0}
+.review blockquote {font-size:clamp(20px,1.6vw,24px);line-height:1.7;overflow-wrap:break-word}
+.review figcaption {font-size:15px;line-height:1.7}
+.review figcaption small {font-size:13px}
+.process-grid {grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.process-grid h3 {font-size:23px;line-height:1.4}
+.process-grid p {font-size:var(--body-size);line-height:1.85}
+.comparison-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.comparison {min-width:0;padding:clamp(24px,3vw,42px)}
+.comparison h3 {font-size:clamp(25px,2vw,32px);line-height:1.35;overflow-wrap:break-word}
+.comparison li {font-size:16px;gap:20px;padding-block:18px;line-height:1.75}
+.comparison li>div {overflow-wrap:break-word}
+.comparison li small {font-size:12px;line-height:1.7}
+.comparison li span {font-size:14px;line-height:1.7}
+.salary-source {font-size:15px}
+.comparison-total {font-size:15px;line-height:1.8}
+.comparison-total strong {font-size:clamp(30px,2.5vw,40px);overflow-wrap:break-word}
+.comparison-featured .comparison-total strong {font-size:clamp(22px,1.8vw,28px)}
+#investment>.container>.placeholder-note {font-size:13px;line-height:1.85;max-width:1160px}
+.timeline-grid {grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.week {min-width:0}
+.week-tag {font-size:13px}
+.week h3 {font-size:22px;line-height:1.4;min-height:0;margin-block:18px}
+.week li {font-size:15px;line-height:1.8;padding-block:9px;padding-left:21px}
+.faq-layout {grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr);gap:clamp(32px,5vw,80px)}
+.faq-list details {padding-block:24px}
+.faq-list summary {font-size:18px;line-height:1.7;gap:20px;align-items:flex-start}
+.faq-list summary>span {flex:0 0 26px;width:26px;height:32px;display:grid;place-items:center;font-size:0;line-height:1}
+.faq-list summary>span:before {content:'+';font-size:25px;line-height:1}
+.faq-list details[open] summary>span {transform:none}
+.faq-list details[open] summary>span:before {content:'−'}
+.faq-list details p {font-size:17px;line-height:1.85;margin-right:24px}
+.booking-layout {grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,80px)}
+.audit-points {font-size:17px;line-height:1.85}
+.booking-card>p {font-size:17px;line-height:1.85}
+.booking-meta {font-size:14px!important}
+.booking-card>small {font-size:13px;line-height:1.85}
+.booking-card .tag {font-size:11px}
+.booking-brand {font-size:12px;line-height:1.8}
+.calendar-placeholder>span {font-size:11px}
+.footer-main>p {font-size:16px;line-height:1.85}
+.footer-main nav {font-size:15px;line-height:1.8;gap:14px}
+.footer-social>p {font-size:12px;line-height:1.8}
+.footer-bottom {font-size:13px;line-height:1.8}
+#dialog-content>p {font-size:17px;line-height:1.85}
+
+/* The original, unaltered logo artwork is revealed on hover or keyboard focus. */
+.logo-marquees {--logo-slot-width:190px;--logo-gap:40px;gap:20px}
+.logo-cycle .client-logo-slot {height:90px;padding:10px 12px;border-radius:6px;transition:background-color .2s ease;outline-offset:3px}
+.logo-cycle .client-logo-art {height:64px}
+.logo-cycle .client-logo-wide .client-logo-art {height:48px;max-width:172px}
+.logo-cycle .client-logo-compact .client-logo-art {height:68px;max-width:110px}
+.client-logo-slot:is(:hover,:focus-visible) .client-logo-art image {filter:none}
+.client-logo-slot.logo-original-dark:is(:hover,:focus-visible) {background:var(--forest)}
+.client-logo-slot.logo-original-light:is(:hover,:focus-visible) {background:#fff}
+.client-logo-slot:focus-visible {outline:2px solid var(--forest)}
+.logo-marquee-row:focus-within .logo-marquee-track {animation-play-state:paused}
+.logos-keyboard-browse .logo-marquee-track {animation:none!important;transform:none!important;will-change:auto}
+.logos-keyboard-browse .logo-cycle[aria-hidden="true"] {display:none}
+.logos-keyboard-browse .logo-marquee-row {overflow-x:auto;mask-image:none;scrollbar-width:none}
+.logos-keyboard-browse .logo-marquee-row::-webkit-scrollbar {display:none}
+.emails-keyboard-browse .email-marquee-row {padding-bottom:0;scrollbar-width:none}
+.emails-keyboard-browse .email-marquee-row::-webkit-scrollbar {display:none}
+
+/* Full-width galleries keep the fades at the screen edges, off the central cards. */
+.email-showcase {padding-block:44px;contain:paint}
+.email-showcase>.container {width:100%;max-width:none}
+.email-showcase-heading,.email-showcase-help {padding-inline:var(--page-gutter)}
+.email-showcase-help {font-size:14px;line-height:1.85;margin-bottom:28px;max-width:none}
+.email-marquees {--email-card-width:clamp(248px,20vw,340px);--email-card-height:clamp(380px,30vw,480px);--email-gap:24px;gap:24px}
+.email-marquee-row {
+  mask-image:linear-gradient(to right,transparent,#000 14px,#000 calc(100% - 14px),transparent);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 14px,#000 calc(100% - 14px),transparent);
+}
+.email-preview-viewport img {will-change:auto}
+.email-marquee-track {animation-name:email-showcase-cycle}
+@keyframes email-showcase-cycle {
+  from {transform:translateX(0)}
+  to {transform:translateX(calc(-1 * var(--email-cycle-width,0px)))}
+}
+.motion-offscreen .email-marquee-track,.motion-offscreen .logo-marquee-track {animation-play-state:paused}
+@media(hover:hover) and (pointer:fine) {
+  .email-marquee-card:hover .email-preview-viewport img {will-change:transform}
+}
+@media(min-width:1920px) {
+  .container {width:min(1680px,calc(100% - var(--page-gutter) * 2))}
+  .hero-centered .hero-copy,.hero-centered h1 {max-width:1280px}
+  .hero-centered h1 {font-size:82px}
+  .hero-centered .hero-sub {font-size:21px;max-width:960px}
+  .section-text,.section-heading .section-text {font-size:20px}
+  .service p,.process-grid p {font-size:18px}
+}
+@media(max-width:1100px) {
+  .menu-toggle {display:inline-flex;align-items:center;gap:12px;background:transparent;border:1px solid #ffffff35;color:var(--white);padding:11px 15px;border-radius:4px;font-size:15px;min-height:46px}
+  #navigation {display:none;position:absolute;top:100%;left:0;right:0;background:var(--forest);padding:20px var(--page-gutter);border-top:1px solid #ffffff20;box-shadow:0 12px 20px #0002;max-height:calc(100dvh - var(--header-height));overflow-y:auto;overscroll-behavior:contain}
+  #navigation.is-open {display:flex;flex-direction:column;align-items:stretch;gap:0}
+  #navigation>a:not(.button) {padding:12px 5px;font-size:17px;min-height:48px}
+  #navigation>.button {margin-top:14px}
+  .hero-centered h1 {font-size:clamp(44px,5.7vw,64px)}
+  .stats-layout {grid-template-columns:1fr}
+  .services-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .process-grid,.timeline-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
+  .case-study {grid-template-columns:1fr}
+  .review-grid {grid-template-columns:1fr}
+  .review {display:flex;flex-direction:column;align-items:flex-start}
+  .review blockquote {max-width:850px;font-size:23px}
+  .review figcaption {margin-top:auto}
+  .comparison li {font-size:15px;gap:14px}
+  .comparison li small {font-size:11px}
+}
+@media(max-width:850px) {
+  .nav-wrap {min-height:80px}
+  .hero-centered h1 {font-size:clamp(38px,6.3vw,54px)}
+  .hero-centered .hero-sub {font-size:18px}
+  .section-heading {display:block}
+  .section-heading .section-text {max-width:680px;margin-top:26px}
+  .split,.about-layout,.booking-layout,.faq-layout {grid-template-columns:1fr;gap:40px}
+  .comparison-grid {grid-template-columns:1fr}
+  .comparison h3 {font-size:30px}
+  .comparison li {font-size:16px}
+  .comparison li small {font-size:12px}
+  .salary-source {font-size:16px}
+  .stats {gap:24px}
+  .stats article {min-width:0}
+  .stats p {font-size:14px}
+  .email-marquees {--email-card-width:260px;--email-card-height:410px;--email-gap:20px;gap:20px}
+  .footer-main {grid-template-columns:1fr 1fr;gap:32px}
+  .footer-main nav {grid-column:1/-1}
+}
+@media(max-width:600px) {
+  :root {--page-gutter:20px;--body-size:16px;--copy-size:17px;--header-height:80px}
+  .brand {font-size:14px}
+  .eyebrow,.partners .eyebrow,.email-showcase-heading .eyebrow,.hero-centered .eyebrow,.story-copy .eyebrow {font-size:11px;line-height:1.9}
+  .draft-banner {font-size:10px}
+  .hero-centered .hero-copy {padding-block:48px 60px}
+  .hero-centered h1 {font-size:clamp(29px,8.1vw,44px)}
+  .hero-centered .hero-sub {font-size:17px;line-height:1.85}
+  .hero-centered .button,.button,.button-small,.booking-card .button {font-size:14px;min-height:54px;padding:15px 21px}
+  .hero-centered .text-link {font-size:14px}
+  .hero-proof p {font-size:11px;line-height:1.8}
+  .hero-proof small,.proof-note {font-size:11px}
+  .hero-proof {padding:13px 14px}
+  .service h3 {font-size:20px;line-height:1.4}
+  .service p,.process-grid p {font-size:16px;line-height:1.85}
+  .services-grid {grid-template-columns:1fr;gap:0}
+  .service {padding:25px 0}
+  .service h3 {margin-block:12px}
+  .section-end>span {font-size:11px}
+  .story-copy .section-text {font-size:17px}
+  .story-cta>p {font-size:13px}
+  .stats {grid-template-columns:1fr}
+  .stats p {font-size:15px}
+  .stats small {font-size:12px}
+  .switch-table {font-size:14px;line-height:1.8}
+  .switch-table th {font-size:14px;padding:18px 12px}
+  .switch-table td {padding:18px 12px}
+  .switch-table td:last-child span {margin-right:4px}
+  .comparison-context {font-size:12px}
+  .case-story {padding:24px}
+  .case-story p,.case-story .case-result-line {font-size:16px}
+  .case-story small {font-size:12px}
+  .case-metrics strong {font-size:29px}
+  .case-metrics span {font-size:12px}
+  .dashboard-area {padding:22px 14px;gap:10px}
+  .dashboard-card {padding:18px 12px}
+  .dashboard-card>strong {font-size:21px}
+  .dashboard-top,.dashboard-card p {font-size:10px}
+  .review blockquote {font-size:20px}
+  .review figcaption {font-size:14px}
+  .review figcaption small {font-size:12px}
+  .process-grid {grid-template-columns:1fr;gap:30px}
+  .process-grid h3 {font-size:22px;margin-block:12px}
+  .comparison {padding:24px}
+  .comparison h3 {font-size:clamp(23px,6.5vw,29px);line-height:1.45}
+  .comparison li {font-size:15px;gap:12px;align-items:flex-start}
+  .comparison li small {font-size:12px}
+  .comparison li span {font-size:13px}
+  .salary-source {font-size:15px}
+  .comparison-total strong {font-size:30px}
+  .comparison-featured .comparison-total strong {font-size:23px}
+  #investment>.container>.placeholder-note {font-size:12px}
+  .timeline-grid {grid-template-columns:1fr;gap:30px}
+  .week h3 {font-size:22px;min-height:0}
+  .week li {font-size:16px;padding-block:7px}
+  .faq-list summary {font-size:17px;line-height:1.75}
+  .faq-list details p {font-size:16px;line-height:1.85;margin-right:0}
+  .booking-card {padding:24px}
+  .booking-card>p {font-size:16px}
+  .audit-points {font-size:16px}
+  .booking-card>small {font-size:13px}
+  .footer-main {grid-template-columns:1fr;gap:30px}
+  .footer-main nav {grid-column:auto;grid-template-columns:repeat(2,minmax(0,1fr));font-size:15px}
+  .footer-bottom {font-size:12px}
+  .footer-social>p {font-size:11px}
+  .placeholder-note {font-size:12px}
+  .email-showcase {padding-block:32px}
+  .email-showcase-help {font-size:13px;line-height:1.85;max-width:none;margin-bottom:24px}
+  .email-marquees {--email-card-width:clamp(240px,76vw,290px);--email-card-height:390px;--email-gap:16px;gap:16px}
+  .email-marquee-row {
+    mask-image:linear-gradient(to right,transparent,#000 8px,#000 calc(100% - 8px),transparent);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 8px,#000 calc(100% - 8px),transparent);
+  }
+  .logo-marquees {--logo-slot-width:155px;--logo-gap:24px;gap:14px}
+  .logo-cycle .client-logo-slot {height:78px}
+  .logo-cycle .client-logo-art {height:54px}
+  .logo-cycle .client-logo-wide .client-logo-art {height:42px;max-width:132px}
+  .logo-cycle .client-logo-compact .client-logo-art {height:60px;max-width:94px}
+}
+@media(max-width:359px) {
+  :root {--page-gutter:16px}
+  .switch-table {font-size:13px}
+  .switch-table th {font-size:13px}
+  .switch-table td {padding:16px 10px}
+  .comparison li {flex-wrap:wrap;row-gap:8px}
+  .comparison .salary-source {margin-left:auto}
+  .booking-card h3 {font-size:26px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {scroll-behavior:auto}
+  .email-marquee-row,.emails-reduced-motion .email-marquee-row,.emails-keyboard-browse .email-marquee-row {mask-image:none;-webkit-mask-image:none}
+  .email-preview-viewport img {will-change:auto}
+}
+.emails-reduced-motion .email-marquee-row,.emails-keyboard-browse .email-marquee-row {mask-image:none;-webkit-mask-image:none}

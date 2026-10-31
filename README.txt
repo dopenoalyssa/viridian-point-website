@@ -95,3 +95,11 @@ brand.css contains the new brand system and self-hosted font declarations.
 See CONTENT_REVIEW.md for remaining content, figure verification, and salary sources.
 The website remains a review draft. The existing logos and email collections
 remain editable in client-logos.js and email-designs.js.
+
+READABILITY AND RESPONSIVE UPDATE
+responsive.css adjusts body text to 16px on phones and about 18px on desktop,
+with larger lead paragraphs and tighter Libre Baskerville letter spacing.
+Client logos show their original uploaded artwork on hover or keyboard focus.
+Set originalBackground: "dark" on white transparent logos for contrast.
+Email galleries span the viewport, with narrow edge fades and enough hidden
+continuations for wider screens. The original email proportions are retained.

@@ -66,3 +66,15 @@ is calculated because the retainer has not been supplied.
 
 Figma source:
 https://www.figma.com/design/zYSxtvSsnE1INFBWc258P3/Viridian-Point-s-Brand-Assets?node-id=0-1
+
+## Readability and interaction update
+
+- Larger body text across services, FAQs, process, timelines, pricing, and footer.
+- Tighter Libre Baskerville tracking: -0.04em for emphasis and -0.025em for quotes.
+- Original logo artwork on hover and keyboard focus, with contrast backgrounds
+  for white transparent artwork. Uploaded image files are unchanged.
+- Full-width email galleries with 8px phone fades and 14px larger-screen fades.
+- Pixel-sized gallery loops with extra hidden continuations on wider screens.
+- Anchor offsets follow actual header height; menus switch at 1100px.
+- Offscreen marquee motion pauses, and preview images prepare animation layers
+  only while hovered on devices with a precise pointer.
