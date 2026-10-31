@@ -100,6 +100,7 @@ READABILITY AND RESPONSIVE UPDATE
 responsive.css adjusts body text to 16px on phones and about 18px on desktop,
 with larger lead paragraphs and tighter Libre Baskerville letter spacing.
 Client logos show their original uploaded artwork on hover or keyboard focus.
-Set originalBackground: "dark" on white transparent logos for contrast.
+Hover changes only the logo artwork. No card, border, or background is added.
+Logos supplied in white remain white when their original artwork is revealed.
 Email galleries span the viewport, with narrow edge fades and enough hidden
 continuations for wider screens. The original email proportions are retained.

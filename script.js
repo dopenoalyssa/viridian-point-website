@@ -205,7 +205,6 @@ function createClientLogo(logo) {
   const item = document.createElement('li');
   const sizes = ['standard', 'wide', 'compact'];
   item.className = 'client-logo-slot client-logo-' + (sizes.includes(logo.size) ? logo.size : 'standard');
-  item.classList.add(logo.originalBackground === 'dark' ? 'logo-original-dark' : 'logo-original-light');
   item.tabIndex = 0;
   item.title = `${logo.name} · Original colors on hover or focus`;
   const mark = document.createElementNS(svgNamespace, 'svg');

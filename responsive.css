@@ -116,13 +116,11 @@ em,.serif {letter-spacing:-.04em;font-kerning:normal}
 
 /* The original, unaltered logo artwork is revealed on hover or keyboard focus. */
 .logo-marquees {--logo-slot-width:190px;--logo-gap:40px;gap:20px}
-.logo-cycle .client-logo-slot {height:90px;padding:10px 12px;border-radius:6px;transition:background-color .2s ease;outline-offset:3px}
+.logo-cycle .client-logo-slot {height:90px;padding:10px 12px;background:transparent;border:0;border-radius:0;box-shadow:none;outline-offset:3px}
 .logo-cycle .client-logo-art {height:64px}
 .logo-cycle .client-logo-wide .client-logo-art {height:48px;max-width:172px}
 .logo-cycle .client-logo-compact .client-logo-art {height:68px;max-width:110px}
 .client-logo-slot:is(:hover,:focus-visible) .client-logo-art image {filter:none}
-.client-logo-slot.logo-original-dark:is(:hover,:focus-visible) {background:var(--forest)}
-.client-logo-slot.logo-original-light:is(:hover,:focus-visible) {background:#fff}
 .client-logo-slot:focus-visible {outline:2px solid var(--forest)}
 .logo-marquee-row:focus-within .logo-marquee-track {animation-play-state:paused}
 .logos-keyboard-browse .logo-marquee-track {animation:none!important;transform:none!important;will-change:auto}

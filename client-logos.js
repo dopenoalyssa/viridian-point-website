@@ -1,8 +1,8 @@
 // One list for both rows. New logos are split automatically between them.
 // Required: name and file. Optional: width, height, viewBox, size, treatment.
 // size: standard, wide, or compact. treatment: alpha (default), or white-knockout.
-// Use originalBackground: "dark" for white transparent logos so their original
-// artwork stays visible on hover and keyboard focus. Original files are unchanged.
+// Hover and keyboard focus reveal the uploaded colors without adding a background.
+// Original files are unchanged, including logos supplied in white.
 window.VIRIDIAN_CLIENT_LOGOS = [
   {
     "name": "Arrow Town",
@@ -26,8 +26,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 2048,
     "height": 601,
     "viewBox": "403 0 1242 601",
-    "size": "standard",
-    "originalBackground": "dark"
+    "size": "standard"
   },
   {
     "name": "Anytime Fairway",
@@ -35,8 +34,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 2048,
     "height": 1135,
     "viewBox": "0 0 2048 1135",
-    "size": "compact",
-    "originalBackground": "dark"
+    "size": "compact"
   },
   {
     "name": "Adverts.Ai",
@@ -44,8 +42,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 2048,
     "height": 508,
     "viewBox": "12 49 2036 365",
-    "size": "wide",
-    "originalBackground": "dark"
+    "size": "wide"
   },
   {
     "name": "Adorn Pili",
@@ -53,8 +50,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 2048,
     "height": 272,
     "viewBox": "0 12 1987 229",
-    "size": "wide",
-    "originalBackground": "dark"
+    "size": "wide"
   },
   {
     "name": "Sleep Zen",
@@ -102,8 +98,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 125,
     "size": "wide",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Melts",
@@ -111,8 +106,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 130,
     "size": "wide",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Moda Minx",
@@ -120,8 +114,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 118,
     "size": "wide",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "DLA Cosmetics",
@@ -129,8 +122,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 111,
     "size": "wide",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Mobility and Wellness",
@@ -138,8 +130,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 635,
     "height": 240,
     "size": "standard",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Bubblebro",
@@ -187,8 +178,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 125,
     "size": "wide",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Uniqfind",
@@ -196,8 +186,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 165,
     "size": "standard",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Moment",
@@ -205,8 +194,7 @@ window.VIRIDIAN_CLIENT_LOGOS = [
     "width": 640,
     "height": 132,
     "size": "wide",
-    "treatment": "alpha",
-    "originalBackground": "dark"
+    "treatment": "alpha"
   },
   {
     "name": "Love & Fit",
