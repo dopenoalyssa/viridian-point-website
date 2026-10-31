@@ -19,7 +19,7 @@ assets/: Vector brand mark and SVG, PNG, ICO, and Apple favicon formats.
 netlify.toml: Future Netlify configuration, root publish directory, no build.
 
 CURRENT PALETTE
-Primary #0F2D33. Warm off-white #F5F3EE. Lime #D6F644.
+Primary #012E33. Warm off-white #F3F5F4. Lime #D2EF23.
 HTML and CSS declare color-scheme: only light. Normal device dark mode does not
 switch the page colors. Extensions and user accessibility overrides can still
 change appearance. Visitor accessibility settings are preserved.
@@ -87,3 +87,11 @@ Paste the agency's actual profile URLs into social-links.js. No profile URLs
 were supplied, so the current icons open a clearly labeled draft notice.
 Once a valid http/https URL is present, that icon becomes a normal external link.
 All icons have accessible labels and visible keyboard focus.
+
+
+NOVEMBER 1, 2026 UPDATE
+Copy, brand fonts, palette, logo, and favicon have been updated.
+brand.css contains the new brand system and self-hosted font declarations.
+See CONTENT_REVIEW.md for remaining content, figure verification, and salary sources.
+The website remains a review draft. The existing logos and email collections
+remain editable in client-logos.js and email-designs.js.
